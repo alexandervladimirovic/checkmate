@@ -1,0 +1,29 @@
+# Virtual enviroment
+venv/
+.venv/
+.env
+
+# MacOS and Windows
+.DS_Store
+thumbs.db
+
+# Cache and logs
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.pytest_cache/
+*.log
+logs/
+
+# DB
+*.db
+*.dump
+*.sql
+
+# IDE
+.nvim/
+.neovimrc/
+.idea/
+.vscode/
+*.swp
+*.swo

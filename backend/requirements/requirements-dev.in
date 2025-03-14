@@ -1,0 +1,9 @@
+loguru
+fastapi[standard]
+SQLAlchemy
+alembic
+authlib
+python-environ
+pytest
+pytest-asyncio
+argon2-cffi
