@@ -1,8 +1,7 @@
 import os
 import sys
 
-from loguru import logger
-from loguru import Logger
+from loguru import Logger, logger
 
 
 LOG_DIR = "logs"

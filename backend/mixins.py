@@ -2,11 +2,11 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 from sqlalchemy import Column, DateTime
 
-tz = ZoneInfo("UTC")
+utc = ZoneInfo("UTC")
 
 
 def utc_current_time():
-    return datetime.now(tz)
+    return datetime.now(utc)
 
 
 class TimeStampMixin:
@@ -14,4 +14,4 @@ class TimeStampMixin:
     updated_at = Column(DateTime, default=utc_current_time, onupdate=utc_current_time)
 
     def update_timestamp(self):
-        self.updated_at = datetime.now(tz)
+        self.updated_at = datetime.now(utc)

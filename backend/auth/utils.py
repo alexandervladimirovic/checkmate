@@ -1,21 +1,22 @@
-from argon2 import PasswordHasher
+from typing import NoReturn, Callable
 
-from settings import (
-    ARGON2_TIME_COST,
-    ARGON2_MEMORY_COST,
-    ARGON2_PARALLELISM,
-    ARGON2_HASH_LEN,
-    ARGON2_SALT_LEN
-)
+from logger import setup_logger
 
 
-ph = PasswordHasher(
-    time_cost=ARGON2_TIME_COST,
-    memory_cost=ARGON2_MEMORY_COST,
-    parallelism=ARGON2_PARALLELISM,
-    hash_len=ARGON2_HASH_LEN,
-    salt_len=ARGON2_SALT_LEN
-)
+log = setup_logger()
 
 
-class PasswordAction: ...
+def handle_errors(
+    exception: Exception,
+    message: str,
+    log_message: str,
+    log_level: Callable[[str], None] = log.error,
+) -> NoReturn:
+    """Function for raise PasswordHashingException and write message in log.
+
+    :param message(str): Short message for information raises.
+    :param log_message(str): Detail message for log file.
+    :param log_level(callable): Level log(default=log.error).
+    """
+    log_level(log_message)
+    raise exception(message)

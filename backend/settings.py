@@ -1,12 +1,18 @@
 import environ
+from argon2 import PasswordHasher
 
 
 env = environ.Env()
 env.read_env(".env")
 
+# Setup for hashing and verify password
+ph = PasswordHasher(
+    time_cost=env.int("ARGON2_TIME_COST"),
+    memory_cost=env.int("ARGON2_MEMORY_COST"),
+    parallelism=env.int("ARGON2_PARALLELISM"),
+    hash_len=env.int("ARGON2_HASH_LEN"),
+    salt_len=env.int("ARGON2_SALT_LEN"),
+)
 
-ARGON2_TIME_COST = env.int("ARGON2_TIME_COST")
-ARGON2_MEMORY_COST = env.int("ARGON2_MEMORY_COST")
-ARGON2_PARALLELISM = env.int("ARGON2_PARALLELISM")
-ARGON2_HASH_LEN = env.int("ARGON2_HASH_LEN")
-ARGON2_SALT_LEN = env.int("ARGON2_SALT_LEN")
+LIFETIME_ACCESS_TOKEN_IN_MINUTE = env.int("LIFETIME_ACCESS_TOKEN")
+LIFETIME_REFRESH_TOKEN_IN_DAYS = env.int("LIFETIME_REFRESH_TOKEN")

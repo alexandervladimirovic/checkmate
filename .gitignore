@@ -27,3 +27,6 @@ logs/
 .vscode/
 *.swp
 *.swo
+
+# secrets
+secrets/
